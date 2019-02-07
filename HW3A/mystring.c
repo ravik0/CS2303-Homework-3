@@ -74,6 +74,7 @@ char* mystrdup(char* s) {
 char* mystrcpy(char* dest, char* src) {
 	char* initialDestPos = dest;
 	while(*dest++ = *src++);
+	*dest = '\0';
 	dest = initialDestPos;
 	return initialDestPos;
 }
@@ -85,12 +86,32 @@ char* mystrncpy(char* dest, char* src, size_t n) {
 	// Must fill in
 	return dest;
 }
-/** Must fill in
- *
+/**
+ * Appends the first n characters to the string pointed to by dest, plus a null terminator.
+ * If n is greater than the length of *src, then it just appends over the entirety of src.
+ * If n is equal to the length of src, it simply appends over the entirety of src.
+ * If n is less than the length of src, only the first n characters of src (and a null terminator)
+ * will be appended to dest.
+ * @param dest the destination to concatenate onto
+ * @param src the source to concatenate from
+ * @param n the amount of characters to concatenate over from src
+ * @return pointer to dest
  */
 char* mystrncat(char* dest, char* src, size_t n) {
-	// Must fill in
-	return dest;
+	int srcLen = mystrlen2(src);
+	char* retValue;
+	if(n >= srcLen) {
+		retValue = mystrcat(dest, src);
+	}
+	else {
+		retValue = dest;
+		dest+=mystrlen2(dest);
+		while(n >= 0) {
+			*dest++ = *src++;
+			n--;
+		}
+	}
+	return retValue;
 }
 
 /**

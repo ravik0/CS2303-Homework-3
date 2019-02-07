@@ -222,8 +222,8 @@ bool testMystrcat() {
 	char s1a[] = "012345678901234567890123456789\0\0\0\0\0\0";
 	char s2a[] = "ABCDEF";
 	char* s3a = strcat(s1a,s2a);
-	char s4a[] = "012345678901234567890123456789\0\0\0\0\0\0";
-	char s5a[] = "ABCDEF";
-	char* s6a = mystrcat(s4a,s5a);
-	return strcmp(s6a,s3a) == 0;
+	char s1b[] = "012345678901234567890123456789\0\0\0\0\0\0";
+	char s2b[] = "ABCDEF";
+	char* s3b = mystrcat(s1b,s2b);
+	return strcmp(s3a,s3b) == 0;
 }
