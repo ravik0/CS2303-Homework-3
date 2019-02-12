@@ -1,0 +1,192 @@
+\section{mystring.\+c File Reference}
+\label{mystring_8c}\index{mystring.\+c@{mystring.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mystring.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \textbf{ mystrlen1} (const char $\ast$s)
+\item 
+size\+\_\+t \textbf{ mystrlen2} (const char $\ast$s)
+\item 
+char $\ast$ \textbf{ mystrdup} (char $\ast$s)
+\item 
+char $\ast$ \textbf{ mystrndup} (char $\ast$s, size\+\_\+t n)
+\item 
+char $\ast$ \textbf{ mystrcpy} (char $\ast$dest, char $\ast$src)
+\item 
+char $\ast$ \textbf{ mystrncpy} (char $\ast$dest, char $\ast$src, size\+\_\+t n)
+\item 
+char $\ast$ \textbf{ mystrncat} (char $\ast$dest, char $\ast$src, size\+\_\+t n)
+\item 
+char $\ast$ \textbf{ mystrcat} (char $\ast$dest, char $\ast$src)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{mystring_8c_a68e51a014c7210b524d657b665d09db8}} 
+\index{mystring.\+c@{mystring.\+c}!mystrcat@{mystrcat}}
+\index{mystrcat@{mystrcat}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrcat()}
+{\footnotesize\ttfamily char$\ast$ mystrcat (\begin{DoxyParamCaption}\item[{char $\ast$}]{dest,  }\item[{char $\ast$}]{src }\end{DoxyParamCaption})}
+
+Concatenates a copy of the string pointed to by src onto the end of the string pointed to by dest. Overwrites the null character at the end of dest, and adds a null terminator at the end of the new string. Will concatenate even if there is not enough space in dest. 
+\begin{DoxyParams}{Parameters}
+{\em dest} & the destination to concatenate onto \\
+\hline
+{\em src} & the string to concatenate onto dest. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to dest 
+\end{DoxyReturn}
+
+
+References mystrcpy(), and mystrlen2().
+
+
+
+Referenced by mystrncat(), and test\+Mystrcat().
+
+\mbox{\label{mystring_8c_acce8ca34ad672c764b2817e5f91707d6}} 
+\index{mystring.\+c@{mystring.\+c}!mystrcpy@{mystrcpy}}
+\index{mystrcpy@{mystrcpy}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrcpy()}
+{\footnotesize\ttfamily char$\ast$ mystrcpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{dest,  }\item[{char $\ast$}]{src }\end{DoxyParamCaption})}
+
+Copies a string src into the address dest. Overwrites anything at dest. Src and dest should have the same size, that is if src is 10 characters, dest should be as well. 
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$} & the destination to copy into \\
+\hline
+{\em char$\ast$} & the source location to copy from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the start of the newly copied to string, or just dest 
+\end{DoxyReturn}
+
+
+Referenced by mystrcat(), test\+Mystrcpy(), and test\+Mystrncat().
+
+\mbox{\label{mystring_8c_afd0ffd16b17423165bbba7ccadac9375}} 
+\index{mystring.\+c@{mystring.\+c}!mystrdup@{mystrdup}}
+\index{mystrdup@{mystrdup}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrdup()}
+{\footnotesize\ttfamily char$\ast$ mystrdup (\begin{DoxyParamCaption}\item[{char $\ast$}]{s }\end{DoxyParamCaption})}
+
+Duplicates a character string into a freshly-\/allocated block of memory. 
+\begin{DoxyParams}{Parameters}
+{\em s} & The string to duplicate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the new string. N\+U\+LL if unable to allocate memory, errno holds the error code. 
+\end{DoxyReturn}
+
+
+Referenced by test\+Mystrdup().
+
+\mbox{\label{mystring_8c_a71f9f1095f41990d202157923cfe578a}} 
+\index{mystring.\+c@{mystring.\+c}!mystrlen1@{mystrlen1}}
+\index{mystrlen1@{mystrlen1}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrlen1()}
+{\footnotesize\ttfamily size\+\_\+t mystrlen1 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+Calculate the length of the string, excluding the terminating null byte (\textquotesingle{}\textbackslash{}0\textquotesingle{}) 
+\begin{DoxyParams}{Parameters}
+{\em const} & char$\ast$ s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of characters in the string pointed to by s 
+\end{DoxyReturn}
+
+
+Referenced by test\+Mystrlen1().
+
+\mbox{\label{mystring_8c_a0553e98c4213b02262ce36a73cc9b088}} 
+\index{mystring.\+c@{mystring.\+c}!mystrlen2@{mystrlen2}}
+\index{mystrlen2@{mystrlen2}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrlen2()}
+{\footnotesize\ttfamily size\+\_\+t mystrlen2 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+Calculate the length of the string excluding the terminating null byte (\textquotesingle{}\textbackslash{}0\textquotesingle{}) 
+\begin{DoxyParams}{Parameters}
+{\em const} & char$\ast$ s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of characters in the string pointed to by s 
+\end{DoxyReturn}
+
+
+Referenced by mystrcat(), mystrncat(), and test\+Mystrlen2().
+
+\mbox{\label{mystring_8c_ae52d8f5cb626d9641dbdca518a054876}} 
+\index{mystring.\+c@{mystring.\+c}!mystrncat@{mystrncat}}
+\index{mystrncat@{mystrncat}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrncat()}
+{\footnotesize\ttfamily char$\ast$ mystrncat (\begin{DoxyParamCaption}\item[{char $\ast$}]{dest,  }\item[{char $\ast$}]{src,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Appends the first n characters of src to the string pointed to by dest, plus a null terminator. If n is greater than the length of $\ast$src, then it just appends over the entirety of src. If n is equal to the length of src, it simply appends over the entirety of src. If n is less than the length of src, only the first n characters of src (and a null terminator) will be appended to dest. 
+\begin{DoxyParams}{Parameters}
+{\em dest} & the destination to concatenate onto \\
+\hline
+{\em src} & the source to concatenate from \\
+\hline
+{\em n} & the amount of characters to concatenate over from src \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to dest 
+\end{DoxyReturn}
+
+
+References mystrcat(), and mystrlen2().
+
+
+
+Referenced by test\+Mystrncat().
+
+\mbox{\label{mystring_8c_abcd51c77fb7a0ccc66dca468bc101ed5}} 
+\index{mystring.\+c@{mystring.\+c}!mystrncpy@{mystrncpy}}
+\index{mystrncpy@{mystrncpy}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrncpy()}
+{\footnotesize\ttfamily char$\ast$ mystrncpy (\begin{DoxyParamCaption}\item[{char $\ast$}]{dest,  }\item[{char $\ast$}]{src,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Copies the first n characters of src to the string pointed to by dest As this function copies AT M\+O\+ST n bytes from src, the function does not null terminate if n $<$ src. Else if n is greater than strlen(src), the function will write null terminators until n bytes of data are written into dest. 
+\begin{DoxyParams}{Parameters}
+{\em dest} & the destination to copy into \\
+\hline
+{\em src} & the src to copy from \\
+\hline
+{\em n} & the amount of bytes to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to dest 
+\end{DoxyReturn}
+
+
+Referenced by test\+Mystrncpy().
+
+\mbox{\label{mystring_8c_abb786f8d50834da04b98e45a3f1c77f9}} 
+\index{mystring.\+c@{mystring.\+c}!mystrndup@{mystrndup}}
+\index{mystrndup@{mystrndup}!mystring.\+c@{mystring.\+c}}
+\subsubsection{mystrndup()}
+{\footnotesize\ttfamily char$\ast$ mystrndup (\begin{DoxyParamCaption}\item[{char $\ast$}]{s,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Duplicates the first n characters of a string into a newly allocated block of memory. If n is less than the size of src, the first n characters of src will be duplicated and a null terminator will be added. 
+\begin{DoxyParams}{Parameters}
+{\em s} & the string to duplicate \\
+\hline
+{\em n} & the number of characters to duplicate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the newly duplicated string 
+\end{DoxyReturn}
+
+
+Referenced by test\+Mystrndup().
+

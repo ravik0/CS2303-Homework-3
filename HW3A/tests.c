@@ -166,6 +166,7 @@ bool testMystrndup() {
 	char* mydup3 = mystrndup(str, 15);
 	printf("In testMystrndup(), stddup3 is %s\n", stddup3);
 	ok3 = !strcmp(stddup3, mydup3);
+
 	return ok1 && ok2 && ok3;;
 }
 
