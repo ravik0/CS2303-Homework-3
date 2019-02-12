@@ -189,7 +189,11 @@ bool testMystrncpy() {
 bool testMystrncat() {
 	bool ok1 = false;
 	bool ok2 = false;
+	bool ok3 = false;
+	bool ok4 = false;
+	bool ok5 = false;
 
+	//n is exactly equal to the size of str.
 	char s1a[] = "012345678901234567890123456789"; // A long string
 	char s2a[] = "ABCDEF"; // A short string we will copy into it twice.
 	char* s3a = strcpy(s1a, s2a);
@@ -211,7 +215,28 @@ bool testMystrncat() {
 		ok2 = true;
 	}
 
-	return ok1 && ok2;
+	//n is less than the size of str.
+	char longs1[] = "AAAAAAAAAAAAAAAAAA"; //long string
+	char tocat1[] = "catme"; //smaller string to copy then cat
+	mystrcpy(longs1, tocat1);
+	char* newstring1 = strncat(longs1, tocat1, 3); //concat the first 3 letters of tocat1, so "cat"
+
+	printf("In testMystrncat: newstring1 = %s\n", newstring1);
+
+	char longs2[] = "AAAAAAAAAAAAAAAAAA";
+	char tocat2[] = "catme";
+	mystrcpy(longs2, tocat2);
+	char* newstring2 = mystrncat(longs2, tocat2, 3);
+
+	ok3 = strcmp(longs1, longs2);
+	ok4 = strcmp(newstring1, newstring2);
+	ok5 = strcmp(newstring2, "catmecat"); //just to make sure it is what we expected.
+
+	//n is greater than the size of str.
+
+
+
+	return ok1 && ok2 && ok3 && ok4 && ok5;
 }
 
 /**
@@ -221,9 +246,29 @@ bool testMystrncat() {
 bool testMystrcat() {
 	char s1a[] = "012345678901234567890123456789\0\0\0\0\0\0";
 	char s2a[] = "ABCDEF";
+	printf("In testMystrcat: s1a is %s\n", s1a);
+	printf("In testMystrcat: s2a is %s\n", s2a);
 	char* s3a = strcat(s1a,s2a);
+	printf("Result in testMystrcat for s3a: %s\n", s3a);
+
 	char s1b[] = "012345678901234567890123456789\0\0\0\0\0\0";
 	char s2b[] = "ABCDEF";
+	printf("In testMystrcat: s1b is %s\n", s1b);
+	printf("In testMystrcat: s2b is %s\n", s2b);
 	char* s3b = mystrcat(s1b,s2b);
-	return strcmp(s3a,s3b) == 0;
+	printf("Result in testMystrcat for s3b: %s\n", s3b);
+
+	bool ok1 = strcmp(s3a,s3b) == 0;
+
+	char fulls1[] = "ToCat";
+	char others1[10] = "when";
+	char* originalcat = strcat(others1, fulls1);
+
+	char fulls2[] = "ToCat";
+	char others2[10] = "when";
+	char* newcat = mystrcat(others2, fulls2);
+
+	bool ok2 = strcmp(originalcat, newcat) == 0;
+
+	return ok1 && ok2;
 }

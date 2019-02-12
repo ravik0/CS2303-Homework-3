@@ -16,6 +16,7 @@ bool tests(void);
 bool testMystrlen1(void);
 bool testMystrlen2(void);
 bool testMystrdup();
+bool testMystrndup();
 bool testMystrcpy();
 bool testMystrncpy();
 bool testMystrcpy();

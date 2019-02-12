@@ -18,7 +18,7 @@ production.o: production.c production.h mystring.h
 
 mystring.o: mystring.c mystring.h
 	gcc $(CFLAGS) -c mystring.c
-
+	
 clean:
 	rm -r -f *.o HW3A html latex
 

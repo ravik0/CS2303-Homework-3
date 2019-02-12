@@ -65,6 +65,28 @@ char* mystrdup(char* s) {
 }
 
 /**
+ * Duplicates the first n characters of a string into a newly allocated block of memory.
+ * If n is less than the size of src, the first n characters of src will be duplicated and
+ * a null terminator will be added.
+ * @param s the string to duplicate
+ * @param n the number of characters to duplicate
+ * @return a pointer to the newly duplicated string
+ */
+char* mystrndup(char* s, size_t n) {
+	char* newstr = (char*) malloc(n+1);
+	char* retPtr = newstr;
+	if(newstr != NULL) {
+		for(int i = 0; i < n; i++) {
+			*newstr = *s;
+			newstr++;
+			s++;
+		}
+		*newstr = '\0';
+	}
+	return retPtr;
+}
+
+/**
  * Copies a string src into the address dest. Overwrites anything at dest. Src and dest should have
  * the same size, that is if src is 10 characters, dest should be as well.
  * @param char* the destination to copy into
@@ -79,15 +101,34 @@ char* mystrcpy(char* dest, char* src) {
 	return initialDestPos;
 }
 
-/** Must fill in
- *
+/**
+ * Copies the first n characters of src to the string pointed to by dest
+ * As this function copies AT MOST n bytes from src, the function does not
+ * null terminate if n < src. Else if n is greater than strlen(src),
+ * the function will write null terminators until n bytes of data are
+ * written into dest.
+ * @param dest the destination to copy into
+ * @param src the src to copy from
+ * @param n the amount of bytes to copy
+ * @return pointer to dest
  */
 char* mystrncpy(char* dest, char* src, size_t n) {
-	// Must fill in
-	return dest;
+	char* retPtr = dest;
+	for(int i = 0; i < n; i++) {
+		if(*src != '\0') {
+			*dest = *src;
+			dest++;
+			src++;
+		}
+		else if (*src == '\0') {
+			*dest = '\0';
+			dest++;
+		}
+	}
+	return retPtr;
 }
 /**
- * Appends the first n characters to the string pointed to by dest, plus a null terminator.
+ * Appends the first n characters of src to the string pointed to by dest, plus a null terminator.
  * If n is greater than the length of *src, then it just appends over the entirety of src.
  * If n is equal to the length of src, it simply appends over the entirety of src.
  * If n is less than the length of src, only the first n characters of src (and a null terminator)
@@ -106,10 +147,13 @@ char* mystrncat(char* dest, char* src, size_t n) {
 	else {
 		retValue = dest;
 		dest+=mystrlen2(dest);
-		while(n >= 0) {
-			*dest++ = *src++;
+		do {
+			*dest = *src;
+			dest++;
+			src++;
 			n--;
-		}
+		} while (n > 0);
+		*dest = '\0';
 	}
 	return retValue;
 }

@@ -13,6 +13,7 @@
 size_t mystrlen1(const char* s);
 size_t mystrlen2(const char* s);
 char* mystrdup(char* s);
+char* mystrndup(char* s, size_t n);
 char* mystrcpy(char* dest, char* src);
 char* mystrncpy(char* dest, char* src, size_t n);
 char* mystrncat(char* dest, char* src, size_t n);
