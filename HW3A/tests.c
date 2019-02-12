@@ -31,6 +31,11 @@ bool tests(void)
 		puts("mystrdup() passed.");
 	}
 
+	bool ok8 = testMystrndup();
+	if (ok8) {
+		puts("mystrndup() passsed.");
+	}
+
 	bool ok4 = testMystrncpy();
 	if (ok4) {
 		puts("mystrncpy() passed.");
@@ -51,7 +56,7 @@ bool tests(void)
 		puts("mystrcat() passed");
 	}
 
-	ok = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7; // Did all tests pass?
+	ok = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8; // Did all tests pass?
 	return ok;
 }
 
@@ -134,6 +139,36 @@ bool testMystrdup() {
 	return ok;
 }
 
+/**
+ * Test mystrndup() function.
+ * @return true if pass, false if fail.
+ */
+bool testMystrndup() {
+	bool ok1 = false;
+	bool ok2 = false;
+	bool ok3 = false;
+
+	char str[] = "String1";
+	//n is exactly equal to the size of str
+	char* stddup1 = strndup(str,7);
+	char* mydup1 = mystrndup(str,7);
+	printf("In testMystrndup(), stddup1 is %s\n", stddup1);
+	ok1 = !strcmp(stddup1, mydup1);
+
+	//n is less than the size of str
+	char* stddup2 = strndup(str, 3);
+	char* mydup2 = mystrndup(str, 3);
+	printf("In testMystrndup(), stddup2 is %s\n", stddup2);
+	ok2 = !strcmp(stddup2, mydup2);
+
+	//n is greater than the size of str
+	char* stddup3 = strndup(str, 15);
+	char* mydup3 = mystrndup(str, 15);
+	printf("In testMystrndup(), stddup3 is %s\n", stddup3);
+	ok3 = !strcmp(stddup3, mydup3);
+	return ok1 && ok2 && ok3;;
+}
+
 /*
  * Test mystrcpy() function.
  * @return true if pass, false if fail.
@@ -162,8 +197,8 @@ bool testMystrcpy() {
  * Test mystrncpy() function.
  * @return true if pass, false if fail.
  */
-
 bool testMystrncpy() {
+	//n is exactly equal to the size of str
 	bool ok1 = false;
 	char s1a[] = "012345678901234567890123456789"; // A long string
 	char s2a[] = "ABCDEF"; // A short string we will copy into it.
@@ -179,7 +214,35 @@ bool testMystrncpy() {
 		ok1 = true;
 	}
 
-	return ok1;
+	//n is greater than the size of str
+	bool ok2 = false;
+	char s1c[] = "012345678901234567890123456789"; // A long string
+	char s2c[] = "ABCDEF"; // A short string we will copy into it.
+	char* s3c = strncpy(s1c, s2c, 15); // The result
+
+	printf("In testMystrncpy(): s3c = /%s/\n", s3c);
+
+	char s1d[] = "012345678901234567890123456789"; // A long string
+	char s2d[] = "ABCDEF"; // A short string we will copy into it.
+	char* s3d = mystrncpy(s1d, s2d, 15); // The result
+
+	ok2 = !strcmp(s3c,s3d);
+
+	//n is less than the size of str
+	bool ok3 = false;
+	char s1e[] = "012345678901234567890123456789"; // A long string
+	char s2e[] = "ABCDEF"; // A short string we will copy into it.
+	char* s3e = strncpy(s1e, s2e, 3); // The result
+
+	printf("In testMystrncpy(): s3e = /%s/\n", s3e);
+
+	char s1f[] = "012345678901234567890123456789"; // A long string
+	char s2f[] = "ABCDEF"; // A short string we will copy into it.
+	char* s3f = mystrncpy(s1f, s2f, 3); // The result
+
+	ok3 = !strcmp(s3e,s3f);
+
+	return ok1 && ok2 && ok3;
 }
 
 /*
@@ -192,6 +255,9 @@ bool testMystrncat() {
 	bool ok3 = false;
 	bool ok4 = false;
 	bool ok5 = false;
+	bool ok6 = false;
+	bool ok7 = false;
+	bool ok8 = false;
 
 	//n is exactly equal to the size of str.
 	char s1a[] = "012345678901234567890123456789"; // A long string
@@ -228,15 +294,28 @@ bool testMystrncat() {
 	mystrcpy(longs2, tocat2);
 	char* newstring2 = mystrncat(longs2, tocat2, 3);
 
-	ok3 = strcmp(longs1, longs2);
-	ok4 = strcmp(newstring1, newstring2);
-	ok5 = strcmp(newstring2, "catmecat"); //just to make sure it is what we expected.
+	ok3 = !strcmp(longs1, longs2); //should be 0, so that means false. if !0 then its true.
+	ok4 = !strcmp(newstring1, newstring2);
+	ok5 = !strcmp(newstring2, "catmecat"); //just to make sure it is what we expected.
 
 	//n is greater than the size of str.
+	char longs3[] = "AAAAAAAAAAAAAAAAAA"; //long string
+	char tocat3[] = "catme"; //smaller string to copy then cat
+	mystrcpy(longs3, tocat3);
+	char* newstring3 = strncat(longs3, tocat3, 9); //going to concat entirety of it, but n > length.
 
+	printf("In testMystrncat: newstring3 = %s\n", newstring3);
 
+	char longs4[] = "AAAAAAAAAAAAAAAAAA";
+	char tocat4[] = "catme";
+	mystrcpy(longs4, tocat4);
+	char* newstring4 = mystrncat(longs4, tocat4, 9);
 
-	return ok1 && ok2 && ok3 && ok4 && ok5;
+	ok6 = !strcmp(longs3, longs4);
+	ok7 = !strcmp(newstring3, newstring4);
+	ok8 = !strcmp(newstring4, "catmecatme"); //just to make sure it is what we expected.
+
+	return ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8;
 }
 
 /**
