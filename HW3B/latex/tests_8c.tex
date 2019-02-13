@@ -1,0 +1,240 @@
+\section{tests.\+c File Reference}
+\label{tests_8c}\index{tests.\+c@{tests.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}production.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mystruct.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ tests} (void)
+\item 
+bool \textbf{ test\+Print\+Employee} ()
+\item 
+bool \textbf{ test\+Make\+Employee} ()
+\item 
+bool \textbf{ test\+Generate\+Random\+Char} ()
+\item 
+bool \textbf{ test\+Generate\+Random\+String} ()
+\item 
+bool \textbf{ test\+Make\+Random\+Employee} ()
+\item 
+bool \textbf{ test\+Print\+Employee\+Array} ()
+\item 
+bool \textbf{ test\+Make\+Employee\+Array} ()
+\item 
+bool \textbf{ test\+Shallow\+Copy} ()
+\item 
+bool \textbf{ test\+Free\+Array} ()
+\item 
+bool \textbf{ test\+Copy\+Employee} ()
+\item 
+bool \textbf{ test\+Deep\+Copy} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{tests_8c_a7d57feff38e666070fa5e94c65674f22}} 
+\index{tests.\+c@{tests.\+c}!test\+Copy\+Employee@{test\+Copy\+Employee}}
+\index{test\+Copy\+Employee@{test\+Copy\+Employee}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Copy\+Employee()}
+{\footnotesize\ttfamily bool test\+Copy\+Employee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{copy\+Employee()}{p.}{mystruct_8c_a0f98e6a5ec411e4f147f63c4acb3f808} function by creating an employee, copying it, and checking pointers \begin{DoxyReturn}{Returns}
+true if pass, false if fail. 
+\end{DoxyReturn}
+
+
+References Employee\+::birth\+\_\+year, copy\+Employee(), make\+Random\+Employee(), Employee\+::name, and Employee\+::start\+\_\+year.
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_acb893e2db5c22056499954dc9e7c839f}} 
+\index{tests.\+c@{tests.\+c}!test\+Deep\+Copy@{test\+Deep\+Copy}}
+\index{test\+Deep\+Copy@{test\+Deep\+Copy}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Deep\+Copy()}
+{\footnotesize\ttfamily bool test\+Deep\+Copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{deep\+Copy()}{p.}{mystruct_8c_a86fc52edbcaa4cbac4f49a894f010476} function by creating an array, deep copying it, and checking pointers \begin{DoxyReturn}{Returns}
+true if pass, false if fail 
+\end{DoxyReturn}
+
+
+References deep\+Copy(), free\+Array(), make\+Employee\+Array(), and Employee\+::name.
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_ac5790e28f31a3ef045fb28a0948b8a99}} 
+\index{tests.\+c@{tests.\+c}!test\+Free\+Array@{test\+Free\+Array}}
+\index{test\+Free\+Array@{test\+Free\+Array}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Free\+Array()}
+{\footnotesize\ttfamily bool test\+Free\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{free\+Array()}{p.}{mystruct_8c_acd3779236deca69648e8e8f1c4630446} function by making an array and freeing it \begin{DoxyReturn}{Returns}
+true. As long as the function doesn\textquotesingle{}t crash the program, it passes. 
+\end{DoxyReturn}
+
+
+References free\+Array(), and make\+Employee\+Array().
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_ada46687784682895a5da0527ca4c9982}} 
+\index{tests.\+c@{tests.\+c}!test\+Generate\+Random\+Char@{test\+Generate\+Random\+Char}}
+\index{test\+Generate\+Random\+Char@{test\+Generate\+Random\+Char}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Generate\+Random\+Char()}
+{\footnotesize\ttfamily bool test\+Generate\+Random\+Char (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{generate\+Random\+Char()}{p.}{mystruct_8c_a641e968e8051dd361e5602e3a183d257} function by making and printing a character. \begin{DoxyReturn}{Returns}
+true. The only way to tell if it succeeds is to look at the output 
+\end{DoxyReturn}
+
+
+References generate\+Random\+Char().
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_a56579d3f54ae0eb2426639917cc3c5f9}} 
+\index{tests.\+c@{tests.\+c}!test\+Generate\+Random\+String@{test\+Generate\+Random\+String}}
+\index{test\+Generate\+Random\+String@{test\+Generate\+Random\+String}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Generate\+Random\+String()}
+{\footnotesize\ttfamily bool test\+Generate\+Random\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{generate\+Random\+String()}{p.}{mystruct_8c_a339d43068a43ca84610495fad9fe8757} function by making and printing a string. \begin{DoxyReturn}{Returns}
+true. The only way to tell if it succeeds is to look at the output 
+\end{DoxyReturn}
+
+
+References generate\+Random\+String().
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_ae4ba22f3bf16452487efa177cce283e3}} 
+\index{tests.\+c@{tests.\+c}!test\+Make\+Employee@{test\+Make\+Employee}}
+\index{test\+Make\+Employee@{test\+Make\+Employee}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Make\+Employee()}
+{\footnotesize\ttfamily bool test\+Make\+Employee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Test the make \doxyref{Employee()}{p.}{structEmployee} function by making an employee with known data and printing it. \begin{DoxyReturn}{Returns}
+true. The only way to tell if it succeeds is to look at the output. 
+\end{DoxyReturn}
+
+
+References make\+Employee(), and print\+Employee().
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_acbc746f5b3b71640b4265d6de7157e3e}} 
+\index{tests.\+c@{tests.\+c}!test\+Make\+Employee\+Array@{test\+Make\+Employee\+Array}}
+\index{test\+Make\+Employee\+Array@{test\+Make\+Employee\+Array}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Make\+Employee\+Array()}
+{\footnotesize\ttfamily bool test\+Make\+Employee\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{make\+Employee\+Array()}{p.}{mystruct_8c_a3e9af8811445d0d7a5c9da0c40f63804} function by calling it and printing the results. \begin{DoxyReturn}{Returns}
+true. The only way to tell if it succeeds is to look at the output 
+\end{DoxyReturn}
+
+
+References free\+Array(), make\+Employee\+Array(), and print\+Employee\+Array().
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_a0d7a52b6f312745d704ab8d295d752b4}} 
+\index{tests.\+c@{tests.\+c}!test\+Make\+Random\+Employee@{test\+Make\+Random\+Employee}}
+\index{test\+Make\+Random\+Employee@{test\+Make\+Random\+Employee}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Make\+Random\+Employee()}
+{\footnotesize\ttfamily bool test\+Make\+Random\+Employee (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{make\+Random\+Employee()}{p.}{mystruct_8c_a3a236a57a40387807c40bf62b5b8fe90} function by generating and printing that employee. \begin{DoxyReturn}{Returns}
+true. The only way to tell if it succeeds is to look at the output 
+\end{DoxyReturn}
+
+
+References make\+Random\+Employee(), and print\+Employee().
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_a41c2076a85046e7a355b6993fbeb5f88}} 
+\index{tests.\+c@{tests.\+c}!test\+Print\+Employee@{test\+Print\+Employee}}
+\index{test\+Print\+Employee@{test\+Print\+Employee}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Print\+Employee()}
+{\footnotesize\ttfamily bool test\+Print\+Employee (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Test the \doxyref{print\+Employee()}{p.}{mystruct_8c_acff9aa9547982f1b0effbd6f302e325e} function by creating a known struct and printing it. \begin{DoxyReturn}{Returns}
+true. The only way to tell if it succeeds is to look at the output. 
+\end{DoxyReturn}
+
+
+References Employee\+::birth\+\_\+year, M\+A\+X\+\_\+\+N\+A\+ME, Employee\+::name, print\+Employee(), and Employee\+::start\+\_\+year.
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_af35ca3e48d3e6659b75626228f16794d}} 
+\index{tests.\+c@{tests.\+c}!test\+Print\+Employee\+Array@{test\+Print\+Employee\+Array}}
+\index{test\+Print\+Employee\+Array@{test\+Print\+Employee\+Array}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Print\+Employee\+Array()}
+{\footnotesize\ttfamily bool test\+Print\+Employee\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{print\+Employee\+Array()}{p.}{mystruct_8c_a3d6137c1cd7db028f1c52265b218345f} function by generating an array of employees and printing it \begin{DoxyReturn}{Returns}
+true. The only way to tell if it succeeds is to look at the output 
+\end{DoxyReturn}
+
+
+References free\+Array(), make\+Employee(), and print\+Employee\+Array().
+
+
+
+Referenced by tests().
+
+\mbox{\label{tests_8c_a5e6e6e78df62797046c9ea173550a68a}} 
+\index{tests.\+c@{tests.\+c}!tests@{tests}}
+\index{tests@{tests}!tests.\+c@{tests.\+c}}
+\subsubsection{tests()}
+{\footnotesize\ttfamily bool tests (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+References test\+Copy\+Employee(), test\+Deep\+Copy(), test\+Free\+Array(), test\+Generate\+Random\+Char(), test\+Generate\+Random\+String(), test\+Make\+Employee(), test\+Make\+Employee\+Array(), test\+Make\+Random\+Employee(), test\+Print\+Employee(), test\+Print\+Employee\+Array(), and test\+Shallow\+Copy().
+
+
+
+Referenced by main().
+
+\mbox{\label{tests_8c_a821417980a46e7d5949d2b730f7e5d1e}} 
+\index{tests.\+c@{tests.\+c}!test\+Shallow\+Copy@{test\+Shallow\+Copy}}
+\index{test\+Shallow\+Copy@{test\+Shallow\+Copy}!tests.\+c@{tests.\+c}}
+\subsubsection{test\+Shallow\+Copy()}
+{\footnotesize\ttfamily bool test\+Shallow\+Copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests the \doxyref{shallow\+Copy()}{p.}{mystruct_8c_abd1e3aa85dcf9bad8bb51b9547a0214f} function by making an array and shallow copying it. To make sure it is okay, we check if the pointers to the arrays themselves are not the same, but we check to see if the pointers within the array are the same. \begin{DoxyReturn}{Returns}
+true if succeed, false if fair 
+\end{DoxyReturn}
+
+
+References free\+Array(), make\+Employee\+Array(), and shallow\+Copy().
+
+
+
+Referenced by tests().
+

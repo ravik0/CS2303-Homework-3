@@ -2,7 +2,7 @@
  * mystring.h
  *
  *  Created on: Jan 24, 2019
- *      Author: student
+ *      Author: Ravi Kirschner
  */
 
 #ifndef MYSTRING_H_

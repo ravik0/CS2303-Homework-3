@@ -2,7 +2,7 @@
  * mystring.c
  *
  *  Created on: Jan 24, 2019
- *      Author: student
+ *      Author: Ravi Kirschner
  */
 #include <stdlib.h>
 #include "mystring.h"
@@ -73,15 +73,15 @@ char* mystrdup(char* s) {
  * @return a pointer to the newly duplicated string
  */
 char* mystrndup(char* s, size_t n) {
-	char* newstr = (char*) malloc(n+1);
-	char* retPtr = newstr;
-	if(newstr != NULL) {
+	char* newstr = (char*) malloc(n+1); //allocate new memory of n+1 size, includes the null terminator
+	char* retPtr = newstr; //gets a copy of the ptr to return
+	if(newstr != NULL) { //if we successfully malloc'd
 		for(int i = 0; i < n; i++) {
 			*newstr = *s;
 			newstr++;
 			s++;
-		}
-		*newstr = '\0';
+		} //duplicate first n characters of s
+		*newstr = '\0'; //add null terminator at end.
 	}
 	return retPtr;
 }
@@ -94,10 +94,9 @@ char* mystrndup(char* s, size_t n) {
  * @return the start of the newly copied to string, or just dest
  */
 char* mystrcpy(char* dest, char* src) {
-	char* initialDestPos = dest;
-	while(*dest++ = *src++);
-	*dest = '\0';
-	dest = initialDestPos;
+	char* initialDestPos = dest; //get a copy of dest to return
+	while(*dest++ = *src++); //copy src over to dest until reaching null terminator
+	*dest = '\0'; //add in the null terminator
 	return initialDestPos;
 }
 
@@ -113,17 +112,17 @@ char* mystrcpy(char* dest, char* src) {
  * @return pointer to dest
  */
 char* mystrncpy(char* dest, char* src, size_t n) {
-	char* retPtr = dest;
+	char* retPtr = dest; //get a copy of dest to return later
 	for(int i = 0; i < n; i++) {
 		if(*src != '\0') {
 			*dest = *src;
 			dest++;
 			src++;
-		}
+		} //if we are not at the null terminator, copy over src into dest and increment both pointers
 		else if (*src == '\0') {
 			*dest = '\0';
 			dest++;
-		}
+		} //otherwise if we are at the null terminator, just pad dest with nulls
 	}
 	return retPtr;
 }
@@ -139,21 +138,21 @@ char* mystrncpy(char* dest, char* src, size_t n) {
  * @return pointer to dest
  */
 char* mystrncat(char* dest, char* src, size_t n) {
-	int srcLen = mystrlen2(src);
-	char* retValue;
+	int srcLen = mystrlen2(src); //get length of src
+	char* retValue; //declare return value
 	if(n >= srcLen) {
 		retValue = mystrcat(dest, src);
-	}
+	} //if n is greater than or equal to the length of the src, just use normal strcat to concat.
 	else {
 		retValue = dest;
-		dest+=mystrlen2(dest);
+		dest+=mystrlen2(dest); //get to the end of dest
 		do {
 			*dest = *src;
 			dest++;
 			src++;
 			n--;
-		} while (n > 0);
-		*dest = '\0';
+		} while (n > 0); //copy over src into dest until we reach n == 0
+		*dest = '\0'; //add the null terminator
 	}
 	return retValue;
 }
@@ -168,9 +167,9 @@ char* mystrncat(char* dest, char* src, size_t n) {
  * @return a pointer to dest
  */
 char* mystrcat(char* dest, char* src) {
-	int endOfDest = mystrlen2(dest);
-	char* retValue = dest;
+	int endOfDest = mystrlen2(dest); //find end of dest
+	char* retValue = dest; //make copy of dest ptr to return
 	dest+=endOfDest;
-	mystrcpy(dest,src);
+	mystrcpy(dest,src); //copy over src to end of dest.
 	return retValue;
 }

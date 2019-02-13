@@ -2,7 +2,7 @@
  * tests.h
  *
  *  Created on: Jan 24, 2019
- *      Author: student
+ *      Author: Ravi Kirschner
  */
 
 #ifndef TESTS_H_

@@ -2,7 +2,7 @@
  * tests.c
  *
  *  Created on: Jan 24, 2019
- *      Author: student
+ *      Author: Ravi Kirschner
  */
 
 #include <stdio.h>
