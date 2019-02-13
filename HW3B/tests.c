@@ -206,19 +206,21 @@ bool testFreeArray() {
  */
 bool testCopyEmployee() {
 	puts("In testCopyEmployee():");
-	bool ok = false;
+	bool ok1 = false;
+	bool ok2 = false;
+	bool ok3 = false;
 	struct Employee* e1 = makeRandomEmployee();
 	struct Employee* e2 = copyEmployee(e1);
-	ok = &e1->birth_year != &e2->birth_year && e1->birth_year == e2->birth_year;
+	ok1 = &e1->birth_year != &e2->birth_year && e1->birth_year == e2->birth_year;
 	printf("e1 birth /%p/, e2 birth /%p/\n", &e1->birth_year, &e2->birth_year);
-	ok = &e1->start_year != &e2->start_year && e1->start_year == e2->start_year;
+	ok2 = &e1->start_year != &e2->start_year && e1->start_year == e2->start_year;
 	printf("e1 start /%p/, e2 start /%p/\n", &e1->start_year, &e2->start_year);
-	ok = &e1->name != &e2->name && e1->name == e2->name;
+	ok3 = &e1->name != &e2->name && e1->name == e2->name;
 	printf("e1 name /%p/, e2 name /%p/\n", &e1->name, &e2->name);
 	//checks to make sure all the addresses are different but data is same
 	free(e1);
 	free(e2);
-	return ok;
+	return ok1 && ok2 && ok3;
 }
 
 /**
@@ -227,21 +229,29 @@ bool testCopyEmployee() {
  */
 bool testDeepCopy() {
 	puts("In testDeepCopy():");
-	bool ok = false;
+	bool ok1 = false;
+	bool ok2 = false;
+	bool ok3 = false;
+	bool ok4 = false;
+	bool ok5 = false;
 	struct Employee** arr1 = makeEmployeeArray(5);
 	struct Employee** deep = deepCopy(arr1, 5);
 	for(int i = 0; i < 5; i++) {
 		printf("NEXT EMPLOYEE\n");
-		ok = arr1[i] != deep[i]; //check if the pointers are different
+		ok1 = arr1[i] != deep[i]; //check if the pointers are different
 		printf("arr1 employee pointer /%p/, deep employee pointer /%p/\n", *arr1, *deep);
-		ok = &((struct Employee*)arr1[i])->name != &((struct Employee*)deep[i])->name;
+		ok2 = &((struct Employee*)arr1[i])->name != &((struct Employee*)deep[i])->name;
 		//make sure pointers are different
 		printf("arr1 employee name ptr /%p/, deep employee name ptr /%p/\n", &((struct Employee*)arr1[i])->name,
 				&((struct Employee*)deep[i])->name);
 		printf("arr1 employee name /%s/, deep employee name /%s/\n", ((struct Employee*)arr1[i])->name,
 				((struct Employee*)arr1[i])->name);
+		ok3 = ((struct Employee*)arr1[i])->name == ((struct Employee*)deep[i])->name;
+		ok4 = ((struct Employee*)arr1[i])->birth_year == ((struct Employee*)deep[i])->birth_year;
+		ok5 = ((struct Employee*)arr1[i])->start_year == ((struct Employee*)deep[i])->start_year;
+		//checking to make sure the actual numbers are ok
 	}
 	freeArray(arr1, 5);
 	freeArray(deep, 5);
-	return ok;
+	return ok1 && ok2 && ok3 && ok4 && ok5;
 }
