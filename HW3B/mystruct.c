@@ -53,7 +53,7 @@ struct Employee* makeRandomEmployee() {
  * @return the random character
  */
 char* generateRandomChar() {
-	return 'A'+(char)rand()%26;
+	return 'A'+rand()%26;
 }
 
 /**
